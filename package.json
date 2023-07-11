@@ -9,13 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/abdullah-ch/refresh-token-rotation.git"
+    "url": "git+https://github.com/abdullah-ch/nazadv-backend"
   },
   "author": "abdullah",
   "license": "ISC",
-  "bugs": {
-  },
-  "homepage": "https://github.com/abdullah-ch/refresh-token-rotation#readme",
+  "bugs": {},
+  "homepage": "https://github.com/abdullah-ch/nazadv-backend",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cookie-parser": "^1.4.6",
