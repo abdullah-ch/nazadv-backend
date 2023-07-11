@@ -25,6 +25,11 @@ let product = new Schema(
       required: [true, 'Please provide the description of the product'],
       max: [1000, 'description should be less than 1000 characters'],
     },
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: [true, 'Please provide the user for the product'],
+    },
   },
   {
     timestamps: true,

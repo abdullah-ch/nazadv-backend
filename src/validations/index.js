@@ -11,6 +11,16 @@ const userSignUpRules = () => {
       .isLength({ min: 6 })
       .withMessage('password must be at least 6 chars long'),
     body('name').isString().not().isEmpty().withMessage('Name cannot be empty'),
+    body('joiningDate')
+      .not()
+      .isEmpty()
+      .withMessage('Joining Date cannot be empty')
+      .bail()
+      .custom((value) => {
+        const date = new Date(value);
+        return !isNaN(date.getTime());
+      })
+      .withMessage('Joining Date is not a valid date'),
   ];
 };
 
