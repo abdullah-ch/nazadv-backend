@@ -1,4 +1,4 @@
-const { body, validationResult } = require('express-validator');
+const { body, validationResult, param } = require('express-validator');
 const { UN_PROCESSABLE } = require('../constants/errorCodes');
 const AppError = require('../utils/error');
 
@@ -65,6 +65,21 @@ const productCreationUpdationRules = () => {
   ];
 };
 
+const productIdRules = () => {
+  return [
+    param('id')
+      .isString()
+      .not()
+      .isEmpty()
+      .withMessage('Product Id cannot be empty')
+      .bail()
+      .isLength({
+        max: 24,
+        min: 24,
+      })
+      .withMessage('Incorrect Product Id format'),
+  ];
+};
 const validate = (req, res, next) => {
   const errors = validationResult(req);
   if (errors.isEmpty()) {
@@ -73,7 +88,7 @@ const validate = (req, res, next) => {
   const extractedErrors = [];
   errors.array().forEach((error) => {
     const key = error.param;
-    const message = `${key.charAt(0).toUpperCase() + key.slice(1)} is required`;
+    const message = error.msg;
     extractedErrors.push({ key, message });
   });
 
@@ -85,4 +100,5 @@ module.exports = {
   userLogInRules,
   productCreationUpdationRules,
   validate,
+  productIdRules,
 };

@@ -40,6 +40,14 @@ const getProductDetailsById = async (productId) => {
 
   return product;
 };
+
+const deleteProductById = async (productId) => {
+  const deletedProduct = await productModel.deleteOne({
+    _id: productId,
+  });
+
+  return deletedProduct;
+};
 module.exports = {
   saveProduct,
   getProductByProperties,
@@ -47,4 +55,5 @@ module.exports = {
   updateProductById,
   getAllProducts,
   getProductDetailsById,
+  deleteProductById,
 };

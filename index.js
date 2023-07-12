@@ -5,7 +5,6 @@ const { connectDB } = require('./src/config/database');
 const authRouter = require('./src/routers/auth');
 const cookieParser = require('cookie-parser');
 const userRouter = require('./src/routers/user');
-const songRouter = require('./src/routers/song');
 const productRouter = require('./src/routers/product');
 const errorHandler = require('./src/middlewares/errorHandler');
 const app = express();
@@ -24,7 +23,6 @@ app.use(cookieParser());
 // routes
 app.use('/auth', authRouter);
 app.use('/user', userRouter);
-app.use('/song', songRouter);
 app.use('/products', productRouter);
 
 // handling errors

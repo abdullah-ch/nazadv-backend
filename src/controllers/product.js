@@ -10,6 +10,7 @@ const {
   updateProductById,
   getAllProducts,
   getProductDetailsById,
+  deleteProductById,
 } = require('../services/product');
 const { renameKeyInArray, renameKey } = require('../utils');
 const { isCategoryValid } = require('../utils/category');
@@ -146,9 +147,29 @@ const getProductById = async (req, res, next) => {
     );
   }
 };
+
+const deleteProduct = async (req, res, next) => {
+  try {
+    const productId = req.params.id;
+    await getProductByProperties({
+      id: productId,
+    });
+
+    await deleteProductById(productId);
+    return res.status(200).send({
+      message: 'Product deleted successfully',
+    });
+  } catch (error) {
+    console.log('error ===> ', error);
+    return next(
+      new AppError({ message: 'Something Bad Happened' }, INTERNAL_SERVER)
+    );
+  }
+};
 module.exports = {
   createProduct,
   updateProduct,
   getProducts,
   getProductById,
+  deleteProduct,
 };
