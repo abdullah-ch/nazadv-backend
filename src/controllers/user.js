@@ -7,6 +7,7 @@ const getUserInformation = async (req, res, next) => {
     const userDetails = await getSpecificDetailsUser(req.user.id, {
       name: 1,
       email: 1,
+      joiningDate: 1,
       _id: 0,
     });
     return res.status(200).send({
