@@ -11,7 +11,7 @@ let product = new Schema(
     },
     categoryId: {
       type: Schema.Types.ObjectId,
-      ref: 'Category',
+      ref: 'categories',
       required: [true, 'Please provide the category for the product'],
     },
     price: {
@@ -26,7 +26,7 @@ let product = new Schema(
     },
     userId: {
       type: Schema.Types.ObjectId,
-      ref: 'User',
+      ref: 'users',
       required: [true, 'Please provide the user for the product'],
     },
   },

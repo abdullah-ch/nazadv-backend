@@ -109,6 +109,26 @@ const formatError = (error) => {
 
   return error;
 };
+
+// Function to rename the key in a single document
+const renameKey = (doc, oldKey, newKey) => {
+  const clonedDoc = { ...doc };
+  if (oldKey !== newKey && doc[oldKey]) {
+    clonedDoc[newKey] = clonedDoc[oldKey];
+    delete clonedDoc[oldKey];
+  }
+
+  return clonedDoc;
+};
+
+// Function to rename the key in each document in the array
+const renameKeyInArray = (array = [], oldKey, newKey) => {
+  const cloneArr = [...array];
+  cloneArr.forEach((doc) => {
+    renameKey(doc, oldKey, newKey);
+  });
+  return cloneArr ?? [];
+};
 module.exports = {
   generatePassword,
   trimLowerCaseString,
@@ -117,4 +137,6 @@ module.exports = {
   extractUser,
   decodeUser,
   formatError,
+  renameKey,
+  renameKeyInArray,
 };

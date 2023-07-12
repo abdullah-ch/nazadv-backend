@@ -24,9 +24,27 @@ const updateProductById = async (productId, updateData) => {
   return updatedProduct;
 };
 
+const getAllProducts = async (userId) => {
+  const products = await productModel
+    .find({ userId })
+    .populate('categoryId')
+    .lean();
+  return products;
+};
+
+const getProductDetailsById = async (productId) => {
+  const product = await productModel
+    .findOne({ _id: productId })
+    .populate('categoryId')
+    .lean();
+
+  return product;
+};
 module.exports = {
   saveProduct,
   getProductByProperties,
   getProductsByPropertiesExcludingId,
   updateProductById,
+  getAllProducts,
+  getProductDetailsById,
 };

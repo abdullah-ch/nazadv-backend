@@ -1,6 +1,11 @@
 const express = require('express');
 const { productCreationUpdationRules, validate } = require('../validations');
-const { createProduct, updateProduct } = require('../controllers/product');
+const {
+  createProduct,
+  updateProduct,
+  getProducts,
+  getProductById,
+} = require('../controllers/product');
 const { verifyToken } = require('../middlewares/auth');
 
 const productRouter = express.Router();
@@ -12,6 +17,9 @@ productRouter.post(
   validate,
   createProduct
 );
+
+productRouter.get('/', verifyToken, getProducts);
+productRouter.get('/:id', verifyToken, getProductById);
 
 productRouter.put(
   '/',
