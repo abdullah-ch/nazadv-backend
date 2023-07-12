@@ -8,9 +8,8 @@ let product = new Schema(
       required: [true, 'Please provide the name of the product'],
       max: [50, 'name should be less than 50 characters'],
       trim: true,
-      unique: true,
     },
-    category: {
+    categoryId: {
       type: Schema.Types.ObjectId,
       ref: 'Category',
       required: [true, 'Please provide the category for the product'],

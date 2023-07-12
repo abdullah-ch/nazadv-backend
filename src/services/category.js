@@ -10,7 +10,13 @@ const removeCategories = async () => {
   return response;
 };
 
+const getCategoryById = async (id) => {
+  const response = await categoryModel.findById(id);
+  return response;
+};
+
 module.exports = {
   saveCategories,
   removeCategories,
+  getCategoryById,
 };
