@@ -37,7 +37,7 @@ const userLogInRules = () => {
   ];
 };
 
-const productCreationRules = () => {
+const productCreationUpdationRules = () => {
   return [
     body('name')
       .isString()
@@ -71,7 +71,11 @@ const validate = (req, res, next) => {
     return next();
   }
   const extractedErrors = [];
-  errors.array().map((err) => extractedErrors.push({ message: err.msg }));
+  errors.array().forEach((error) => {
+    const key = error.param;
+    const message = `${key.charAt(0).toUpperCase() + key.slice(1)} is required`;
+    extractedErrors.push({ key, message });
+  });
 
   next(new AppError(extractedErrors, UN_PROCESSABLE));
 };
@@ -79,6 +83,6 @@ const validate = (req, res, next) => {
 module.exports = {
   userSignUpRules,
   userLogInRules,
-  productCreationRules,
+  productCreationUpdationRules,
   validate,
 };

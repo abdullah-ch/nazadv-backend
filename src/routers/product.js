@@ -1,6 +1,6 @@
 const express = require('express');
-const { productCreationRules, validate } = require('../validations');
-const { createProduct } = require('../controllers/product');
+const { productCreationUpdationRules, validate } = require('../validations');
+const { createProduct, updateProduct } = require('../controllers/product');
 const { verifyToken } = require('../middlewares/auth');
 
 const productRouter = express.Router();
@@ -8,9 +8,17 @@ const productRouter = express.Router();
 productRouter.post(
   '/',
   verifyToken,
-  productCreationRules(),
+  productCreationUpdationRules(),
   validate,
   createProduct
+);
+
+productRouter.put(
+  '/',
+  verifyToken,
+  productCreationUpdationRules(),
+  validate,
+  updateProduct
 );
 
 module.exports = productRouter;
