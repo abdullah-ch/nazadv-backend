@@ -70,9 +70,11 @@ const createProduct = async (req, res, next) => {
 
     const product = await saveProduct(payload);
 
+    const newlyCreatedProduct = await getProductDetailsById(product.id);
+
     return res.status(200).send({
       message: 'Product Created Successfully !',
-      data: product,
+      data: newlyCreatedProduct,
     });
   } catch (error) {
     console.log('error ==> ', error);
