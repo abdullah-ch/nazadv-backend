@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const userRouter = require('./src/routers/user');
 const productRouter = require('./src/routers/product');
 const errorHandler = require('./src/middlewares/errorHandler');
+const categoryRouter = require('./src/routers/category');
 const app = express();
 require('dotenv').config();
 const port = process.env.PORT || 5000;
@@ -24,6 +25,7 @@ app.use(cookieParser());
 app.use('/auth', authRouter);
 app.use('/user', userRouter);
 app.use('/products', productRouter);
+app.use('/categories', categoryRouter);
 
 // handling errors
 app.use(errorHandler);

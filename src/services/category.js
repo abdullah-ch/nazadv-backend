@@ -15,8 +15,13 @@ const getCategoryById = async (id) => {
   return response;
 };
 
+const getAllCategories = async () => {
+  return await categoryModel.find();
+};
+
 module.exports = {
   saveCategories,
   removeCategories,
   getCategoryById,
+  getAllCategories,
 };
