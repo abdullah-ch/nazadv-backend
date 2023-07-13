@@ -48,6 +48,7 @@ const createProduct = async (req, res, next) => {
     const isProductDuplicated = await getProductByProperties({
       categoryId,
       name,
+      userId: user.id,
     });
     if (isProductDuplicated.length) {
       return next(
@@ -99,6 +100,7 @@ const updateProduct = async (req, res, next) => {
     const isProductDuplicated = await getProductsByPropertiesExcludingId(id, {
       categoryId,
       name,
+      userId: user.id,
     });
     if (isProductDuplicated.length) {
       return next(
