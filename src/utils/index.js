@@ -110,7 +110,13 @@ const formatError = (error) => {
   return error;
 };
 
-// Function to rename the key in a single document
+/**
+ * Renames a key in a single document.
+ * @param {object} doc - The document to update.
+ * @param {string} oldKey - The old key to rename.
+ * @param {string} newKey - The new key to use.
+ * @returns {object} - The updated document with the renamed key.
+ */
 const renameKey = (doc, oldKey, newKey) => {
   const clonedDoc = { ...doc };
   if (oldKey !== newKey && doc[oldKey]) {
@@ -121,7 +127,13 @@ const renameKey = (doc, oldKey, newKey) => {
   return clonedDoc;
 };
 
-// Function to rename the key in each document in the array
+/**
+ * Renames a key in each document in the array.
+ * @param {Array<object>} array - The array of documents to update.
+ * @param {string} oldKey - The old key to rename.
+ * @param {string} newKey - The new key to use.
+ * @returns {Array<object>} - The updated array of documents with the renamed key.
+ */
 const renameKeyInArray = (array = [], oldKey, newKey) => {
   const cloneArr = [...array];
   cloneArr.forEach((doc) => {
@@ -129,6 +141,7 @@ const renameKeyInArray = (array = [], oldKey, newKey) => {
   });
   return cloneArr ?? [];
 };
+
 module.exports = {
   generatePassword,
   trimLowerCaseString,
