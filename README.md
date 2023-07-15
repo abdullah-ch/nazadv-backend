@@ -29,7 +29,7 @@ To get started with the application, follow the steps below:
    npm install
    ```
 
-4. Set the required environment variables by creating a `.env` file in the project root directory. You can use the `.env.example` file as a template and provide your own values.
+4. Set the required environment variables in `.env` file in the project root directory.
 
 5. Run the seeder to populate the database with sample data. Execute the following command:
 
