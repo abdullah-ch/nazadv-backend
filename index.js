@@ -8,6 +8,7 @@ const userRouter = require('./src/routers/user');
 const productRouter = require('./src/routers/product');
 const errorHandler = require('./src/middlewares/errorHandler');
 const categoryRouter = require('./src/routers/category');
+
 const app = express();
 require('dotenv').config();
 const port = process.env.PORT || 5000;
